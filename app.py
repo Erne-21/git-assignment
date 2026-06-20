@@ -35,10 +35,21 @@ def remove_todo(todos, index):
         print("Invalid item number.")
 
 
+def mark_priority(todos, index):
+    try:
+        if not todos[index - 1].startswith("[!] "):
+            todos[index - 1] = "[!] " + todos[index - 1]
+            print(f"Marked as priority: {todos[index - 1]}")
+        else:
+            print("Already marked as priority.")
+    except IndexError:
+        print("Invalid item number.")
+
+
 def menu():
     todos = load_todos()
     while True:
-        print("\n1) View  2) Add  3) Remove  4) Exit")
+        print("\n1) View  2) Add  3) Remove  4) Mark Priority  5) Exit")
         choice = input("Choose an option: ")
         if choice == "1":
             show_todos(todos)
@@ -53,6 +64,13 @@ def menu():
             except ValueError:
                 print("Please enter a number.")
         elif choice == "4":
+            show_todos(todos)
+            try:
+                idx = int(input("Number to mark as priority: "))
+                mark_priority(todos, idx)
+            except ValueError:
+                print("Please enter a number.")
+        elif choice == "5":
             save_todos(todos)
             break
         else:
