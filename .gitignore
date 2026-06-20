@@ -1,0 +1,17 @@
+# Byte-compiled / cache files
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+
+# IDE / editor folders
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# App data generated at runtime (not part of the source code)
+todos.txt
